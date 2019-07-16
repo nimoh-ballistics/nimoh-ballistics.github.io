@@ -210,10 +210,18 @@
         <section id="android">
 			<style>
 				div.background-android {
+				content: "";
 				background-image:url('../images/misc/Android_Robot.svg');
 				background-size: cover;
 				background-repeat:no-repeat;
-				opacity: 0.5; }
+				opacity: 0.5; 
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				position: absolute;
+				z-index: -1; 
+				}
 			</style>
             <div class="container background-android min-vh-100">
                 <div class="row min-vh-100">
