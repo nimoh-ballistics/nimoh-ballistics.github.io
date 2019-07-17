@@ -13,6 +13,36 @@
 </head>
 
 <body data-spy="scroll" data-target="#navbar1" data-offset="60">
+    <script>
+        function navigateToContactForm() {
+
+            var offset = 60;
+            window.location.href = "#contact";
+            var element = document.getElementById("contact");
+            element.scrollIntoView();
+            window.scrollBy(0, -offset);
+
+        }
+
+        $(document).ready(function () {
+
+            var offset = 60;
+
+            $('.navbar-nav>li>a').on('click', function () {
+                var href = $(this).attr('href');
+                event.preventDefault();
+                window.location.hash = href;
+
+                // hide the context menu
+                $('.navbar-collapse').collapse('hide');
+
+                // scroll to the section requested
+                $(href)[0].scrollIntoView();
+                window.scrollBy(0, -offset);
+
+            });
+        });
+    </script>
     <header class="bg-primary" style="padding-top: 100px">
         <style>
             header {
@@ -281,7 +311,7 @@
 							<div class="form-group row was-validated">
 								<label class="col-lg-2 col-form-label form-control-label">Full Name:</label>
 								<div class="col-lg-10">
-									<input class="form-control" type="text" required="" placeholder="Joe Bloggs">
+									<input class="form-control" type="text" required="" placeholder="Firstname Lastname">
 									<div class="invalid-feedback">
 										Full Name is required.
 									</div>
