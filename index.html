@@ -35,13 +35,30 @@
 
         }
 
-		function notifyMessageSentStatus() {
-            $('#notificationModal').modal({
+        function notifyMessageSentStatus() {
+			var title = "Message to Nimoh® Ballistics sent!";
+			var notification1 = "Thank you for your message to Nimoh® Ballistics, which has been sent successfully!  " +
+								"Please note, as per the instructions, non-product-related messages will <strong>not</strong> get a reply.";
+			var notification2 = "Please allow up to five working days for a reply.";
+			setAndDisplayNotificationModal(title, notification1, notification2)
+         }
+
+		function setAndDisplayNotificationModal(title, notification1, notification2) {
+
+		    var notificationModalLabel = document.getElementById("notificationModalLabel");
+            var notificationModalPara1 = document.getElementById("notificationModalPara1");
+            var notificationModalPara2 = document.getElementById("notificationModalPara2");
+
+            notificationModalLabel.innerHTML = title;
+            notificationModalPara1.innerHTML = notification1;
+            notificationModalPara2.innerHTML = notification2;
+
+           $('#notificationModal').modal({
                 backdrop: 'static',
                 keyboard: false
             });
-        }
-		
+		}
+
         $(document).ready(function () {
 
             var offset = 60;
@@ -423,29 +440,29 @@
 
         </div>
     </footer>
-	
-	<div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" id="notificationModalLabel">Message to Nimoh® Ballistics sent!</h4>
-				</div>
-				<div class="modal-body">
-					<p id="notificationModalPara1">
-						Your message to Nimoh® Ballistics has been sent successfully!  
-						<br/>
-						Please note, as per the instructions, non product/service related messages will <strong>not</strong> get a reply.
-					</p>
-					<p id="notificationModalPara2">
-						Please allow up to five working days for a reply.
-					</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
-				</div>
-			</div>
-		</div>
-	</div>
+
+    <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="notificationModalLabel">Message to Nimoh® Ballistics sent!</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="notificationModalPara1">
+                        Your message to Nimoh® Ballistics has been sent successfully!
+                        <br />
+                        Please note, as per the instructions, non-product-related messages will <strong>not</strong> get a reply.
+                    </p>
+                    <p id="notificationModalPara2">
+                        Please allow up to five working days for a reply.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
