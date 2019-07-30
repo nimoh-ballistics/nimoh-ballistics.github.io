@@ -23,6 +23,7 @@
 
         function onReCaptchaValidationExpiry() {
             document.getElementById("submitContactMessageButton").disabled = true;
+            notifyReCaptchaExpiry();
         }
 
         function navigateToContactForm() {
@@ -32,20 +33,27 @@
             var element = document.getElementById("contact");
             element.scrollIntoView();
             window.scrollBy(0, -offset);
-
         }
 
         function notifyMessageSentStatus() {
-			var title = "Message to Nimoh® Ballistics sent!";
-			var notification1 = "Thank you for your message to Nimoh® Ballistics, which has been sent successfully!  " +
-								"Please note, as per the instructions, non-product-related messages will <strong>not</strong> get a reply.";
-			var notification2 = "Please allow up to five working days for a reply.";
-			setAndDisplayNotificationModal(title, notification1, notification2)
-         }
+            var title = "Message to Nimoh® Ballistics sent!";
+            var notification1 = "Thank you for your message to Nimoh® Ballistics, which has been sent successfully!  " +
+                "Please note, as per the instructions, non-product-related messages will <strong>not</strong> get a reply.";
+            var notification2 = "Please allow up to five working days for a reply.";
+            setAndDisplayNotificationModal(title, notification1, notification2);
+        }
 
-		function setAndDisplayNotificationModal(title, notification1, notification2) {
+        function notifyReCaptchaExpiry() {
+            var title = "reCAPTCHA Robot Check Expired";
+            var notification1 = "The robot-or-human validation check you previously completed successfuly has expired and you have not submitted your message!  " +
+                "You will need to re-validate using the reCAPTCHA section of the contact form and submit your message with the \"Submit\" button!";
+            var notification2 = "Please re-validate your status as a human to send your message!";
+            setAndDisplayNotificationModal(title, notification1, notification2);
+        }
 
-		    var notificationModalLabel = document.getElementById("notificationModalLabel");
+        function setAndDisplayNotificationModal(title, notification1, notification2) {
+
+            var notificationModalLabel = document.getElementById("notificationModalLabel");
             var notificationModalPara1 = document.getElementById("notificationModalPara1");
             var notificationModalPara2 = document.getElementById("notificationModalPara2");
 
@@ -53,11 +61,11 @@
             notificationModalPara1.innerHTML = notification1;
             notificationModalPara2.innerHTML = notification2;
 
-           $('#notificationModal').modal({
+            $('#notificationModal').modal({
                 backdrop: 'static',
                 keyboard: false
             });
-		}
+        }
 
         $(document).ready(function () {
 
@@ -78,8 +86,8 @@
             });
 
             document.getElementById("submitContactMessageButton").disabled = true;
-
         });
+
     </script>
     <header class="bg-primary" style="padding-top: 100px">
         <style>
